@@ -1,0 +1,18 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install 18.20.5
+        - nvm use 18.20.5
+        - npm install
+    build:
+      commands:
+        - npm run build --configuration production
+  artifacts:
+    baseDirectory: dist/my-angular-app
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
