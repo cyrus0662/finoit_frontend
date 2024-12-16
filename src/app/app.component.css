@@ -1,0 +1,13 @@
+.clickable-contact {
+    text-decoration: none;
+    color: #007bff;  /* Blue color, you can customize it */
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .clickable-contact:hover {
+    color: #0056b3; /* Darker shade when hovered */
+    text-decoration: underline; /* Underline on hover */
+  }
+  

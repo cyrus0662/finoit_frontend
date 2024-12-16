@@ -1,0 +1,39 @@
+<div style="text-align:center">
+  <h1>Welcome to {{ title }}</h1>
+
+  <div class="center-container">
+    <button (click)="createNewContact()">Create Contact</button>
+  </div>
+
+  <h2>Contacts</h2>
+  <div class="center-container">
+    <ul>
+      <li *ngFor="let contact of contacts">
+        <a href="javascript:void(0);" (click)="getContactDetails(contact.recordId)" class="clickable-contact">
+          {{ contact.firstName }} {{ contact.lastName }}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="message" class="message">{{ message }}</div>
+
+  <div *ngIf="isCreating">
+    <h3>Create New Contact</h3>
+    <form (ngSubmit)="createContact()">
+      <label for="email">Email</label>
+      <input id="email" [(ngModel)]="contact.email" name="email" required />
+      <label for="firstName">First Name</label>
+      <input id="firstName" [(ngModel)]="contact.firstName" name="firstName" required />
+      <label for="lastName">Last Name</label>
+      <input id="lastName" [(ngModel)]="contact.lastName" name="lastName" required />
+      <button type="submit" [disabled]="!contact.email || !contact.firstName || !contact.lastName">Submit</button>
+    </form>
+  </div>
+
+  <div *ngIf="contact.recordId && !isCreating">
+    <h3>Contact Details</h3>
+    <div>Email: {{ contact.email }}</div>
+    <div>Name: {{ contact.firstName }} {{ contact.lastName }}</div>
+  </div>
+</div>
